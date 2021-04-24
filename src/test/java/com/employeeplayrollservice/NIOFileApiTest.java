@@ -1,6 +1,7 @@
 package com.employeeplayrollservice;
 
 import com.employeepayrollservice.FileUtils;
+import com.employeepayrollservice.WatchService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.stream.IntStream;
 
 public class NIOFileApiTest {
-    private static final String HOME = System.getProperty("Path","D:\\javafellowshipinternship\\EmployeePayRoll");
+    private static final String HOME = System.getProperty("Path","C:\\Users\\dinnu\\FellowhShipProblems\\EmployeePayRollService");
     private static final String PLAY_WITH_NIO = "TempPlayGround";
 
     @Test
@@ -49,5 +50,12 @@ public class NIOFileApiTest {
         Files.newDirectoryStream(playPath, path -> path.toFile().isFile() &&
                                                    path.toString().startsWith("temp"))
              .forEach(System.out::println);
+    }
+
+    @Test
+    public void givenADirectoryWhenWatchedListsAllTheActivities() throws IOException {
+        Path dir = Paths.get(HOME+"\\"+PLAY_WITH_NIO);
+        Files.list(dir).filter(Files::isRegularFile).forEach(System.out::println);
+        new WatchService(dir).processEvents();
     }
 }

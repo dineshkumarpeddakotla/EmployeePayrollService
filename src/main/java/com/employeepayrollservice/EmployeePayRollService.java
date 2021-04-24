@@ -1,20 +1,13 @@
 package com.employeepayrollservice;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePayRollService {
-    public enum IOService {
-        CONSOLE_IO, FILE_IO, DB_IO, REST_IO
-    }
-    private List<EmployeePayRollData> employeePayRollList;
 
-    /**
-     * Default Constructor
-     */
-    public EmployeePayRollService() {
-    }
+    private final List<EmployeePayRollData> employeePayRollList;
 
     /**
      * Parameterized Constructor for Initializing List
@@ -45,12 +38,16 @@ public class EmployeePayRollService {
         System.out.println("\n Writing Employee Payroll Roster to Console\n" + employeePayRollList);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Welcome to Employee Payroll Service Program");
         ArrayList<EmployeePayRollData> employeePayRollList = new ArrayList<>();
         EmployeePayRollService employeePayRollService = new EmployeePayRollService(employeePayRollList);
         Scanner consoleInputReader = new Scanner(System.in);
         employeePayRollService.readEmployeePayRollData(consoleInputReader);
         employeePayRollService.writeEmployeePayRollData();
+
+
+        FileOperations fileOperations = new FileOperations();
+        fileOperations.fileOperationDemonstrator();
     }
 }
