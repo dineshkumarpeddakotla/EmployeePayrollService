@@ -45,11 +45,8 @@ public class EmployeePayRollService {
         System.out.println("\n Writing Employee Payroll Roster to Console\n" + employeePayRollList);
     }
 
-    /**
-     * main method
-     */
     public static void main(String[] args) {
-        System.out.println("Welcome to Employee Payroll service program!");
+        System.out.println("Welcome to Employee Payroll Service Program");
         ArrayList<EmployeePayRollData> employeePayRollList = new ArrayList<>();
         EmployeePayRollService employeePayRollService = new EmployeePayRollService(employeePayRollList);
         Scanner consoleInputReader = new Scanner(System.in);
